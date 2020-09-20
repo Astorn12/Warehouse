@@ -1,0 +1,37 @@
+@model  WarehouseGrpc.EquipmentsListResponse
+
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>This is the list.</h1>
+<div class="accordion" id="accordionExample">
+  @{int i=0;}
+@foreach (var item in Model.EquipmentList){
+    
+   
+
+
+   <div class="panel-group" id="accordion_@i">
+              <div class="panel panel-default" id="panel_@i">
+                     <div class="panel-heading">
+                           <h4 class="panel-title">
+                                 <a data-toggle="collapse" data-target="#collapseOne_@i" href="#collapseOne_@i">
+                                       @Html.DisplayFor(modelItem => item.Name)
+                                  </a>
+                            </h4>
+                      </div>
+                      <div id="collapseOne_@i" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <p> Serial Number: @Html.DisplayFor(modelItem => item.SerialNumber)</p>
+                                <p>Type: @Html.DisplayFor(modelItem => item.Type)</p>
+                            </div>
+                      </div>
+              </div>
+        </div>
+        i++;
+}
+</div>
+
+<button type="button" class="btn btn-success" onclick="@("window.location.href='" + @Url.Action("Add", "Equipment") + "'");">Add equipment</button>

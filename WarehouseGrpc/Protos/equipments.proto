@@ -1,0 +1,43 @@
+syntax="proto3";
+
+option  csharp_namespace="WarehouseGrpc";
+
+package equiments;
+
+service Equipments{
+    rpc GetAllEquipments(EquipmentsRequest) returns (EquipmentsListResponse);
+    rpc AddEquipment(EquipmentToAdd) returns (Confirmation);
+}
+
+message EquipmentsRequest{
+
+}
+
+message Confirmation{
+    int32 code=1;
+    string message=2;
+}
+
+
+message EquipmentsListResponse{
+    repeated EquipmentToReturn equipmentList=1;
+}
+
+message EquipmentToAdd{
+    string name=1;
+    string serialNumber=2;
+    EquipmentType type=3;
+}
+
+message EquipmentToReturn{
+    string guid=1;
+    string name=2;
+    string serialNumber=3;
+    
+    EquipmentType type=4;
+}
+enum EquipmentType{
+    RTV=0;
+    AGD=1;
+    VEHICLE=2;
+}

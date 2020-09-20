@@ -1,0 +1,2 @@
+obj\Debug\netcoreapp3.1/Equipments.cs \
+obj\Debug\netcoreapp3.1/EquipmentsGrpc.cs: Protos/equipments.proto
